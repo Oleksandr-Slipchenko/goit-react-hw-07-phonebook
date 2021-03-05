@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": "id-1",
+      "text": "Study React",
+      "completed": false
+    },
+    {
+      "id": "id-2",
+      "text": "Understand React",
+      "completed": false
+    },
+    {
+      "id": "id-3",
+      "text": "Get use React",
+      "completed": true
+    },
+    {
+      "id": "id-4",
+      "text": "Try to use React Hooks",
+      "completed": false
+    }
+  ]
+}
