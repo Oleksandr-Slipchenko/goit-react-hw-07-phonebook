@@ -4,7 +4,7 @@ import s from './ContactForm.module.css';
 import fadeAlert from '../../fadeModules/fadeContactFormAlert.module.css';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
-import * as contactsOperations from '../../redux/contacts/contacts-operations';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 const INITIAL_STATE = {
   number: '',
@@ -109,7 +109,7 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts.items,
+  contacts: contactsSelectors.getAllContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({

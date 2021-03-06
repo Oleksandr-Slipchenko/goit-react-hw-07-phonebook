@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import * as contactsOperations from '../../redux/contacts/contacts-operations';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import fadeStyles from '../../fadeModules/fadeContactList.module.css';
 import ContactListItem from './ContactListItem';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 
 const ContactsList = ({ contacts, onRemove }) => {
   return (
@@ -29,16 +29,8 @@ ContactsList.propTypes = {
   onRemove: PropTypes.func.isRequired,
 };
 
-const getVisibleContacts = (allContacts, filter) => {
-  console.log(allContacts);
-  const normalizedFilter = filter.toLowerCase();
-  return allContacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter),
-  );
-};
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-  contacts: getVisibleContacts(items, filter),
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getVisibleContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({

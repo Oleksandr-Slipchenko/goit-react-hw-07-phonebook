@@ -3,7 +3,7 @@ import * as actions from './contacts-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
 
-export const fetchContacts = () => async dispatch => {
+const fetchContacts = () => async dispatch => {
   dispatch(actions.fetchContactRequest());
 
   try {
@@ -19,7 +19,7 @@ export const fetchContacts = () => async dispatch => {
   //   .catch(error => dispatch(actions.fetchContactError(error)));
 };
 
-export const addContact = (name, number) => async dispatch => {
+const addContact = (name, number) => async dispatch => {
   const contact = { name, number };
 
   dispatch(actions.addContactRequest());
@@ -37,7 +37,7 @@ export const addContact = (name, number) => async dispatch => {
   //   .catch(error => dispatch(actions.addContactError(error)));
 };
 
-export const removeContact = contactId => async dispatch => {
+const removeContact = contactId => async dispatch => {
   dispatch(actions.removeContactRequest());
 
   try {
@@ -51,4 +51,10 @@ export const removeContact = contactId => async dispatch => {
   //   .delete(`/contacts/${contactId}`)
   //   .then(() => dispatch(actions.removeContactSuccess(contactId)))
   //   .catch(error => dispatch(actions.removeContactError(error)));
+};
+
+export default {
+  fetchContacts,
+  addContact,
+  removeContact,
 };

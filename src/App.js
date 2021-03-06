@@ -7,7 +7,7 @@ import Filter from './components/Filter';
 import s from './fadeModules/fadeAppTitle.module.css';
 // import fadeAlert from './fadeModules/fadeAppAlert.module.css';
 // import fadeFilter from './fadeModules/fadeFilter.module.css';
-import * as contactsOperations from './redux/contacts/contacts-operations';
+import { contactsOperations, contactsSelectors } from './redux/contacts/index';
 
 // //////////////////////////////////////////////////////////////////////////
 
@@ -50,7 +50,7 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isLoadingContacts: state.contacts.loading,
+  isLoadingContacts: contactsSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -58,40 +58,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// //////////////////////////////////////////////////////////////////////////
-
-// function App() {
-//   return (
-//     <div className={s.page}>
-//       <CSSTransition
-//         in={true}
-//         appear={true}
-//         timeout={500}
-//         classNames={s}
-//         unmountOnExit
-//       >
-//         <h1 className={s.phoneBookTitle}>Phonebook</h1>
-//       </CSSTransition>
-
-//       <ContactForm />
-
-//       {/* <CSSTransition
-//         in={contacts.length > 1}
-//         appear={true}
-//         timeout={250}
-//         unmountOnExit
-//         classNames={fadeFilter}
-//       > */}
-//       <div className={s.findContacts}>
-//         <h2 className={s.findContactsTitle}>Find contacts</h2>
-//         <Filter />
-//       </div>
-//       {/* </CSSTransition> */}
-
-//       <ContactList />
-//     </div>
-//   );
-// }
-
-// export default App;
