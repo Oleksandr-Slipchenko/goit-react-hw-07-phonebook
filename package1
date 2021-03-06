@@ -30,7 +30,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "netlify deploy -p",
-    "server": "json-server --watch db.json --port 3223 --delay 300"
+    "api-server": "json-server --watch db.json --port 3223 --delay 300"
   },
   "eslintConfig": {
     "extends": [
